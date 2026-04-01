@@ -1,0 +1,22 @@
+{
+  "name": "csc307-ie0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryankles/CSC307-IE0.git"
+  },
+  "author": "Ryan Reeves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryankles/CSC307-IE0/issues"
+  },
+  "homepage": "https://github.com/ryankles/CSC307-IE0#readme",
+  "workspaces": [
+    "packages/*"
+  ]
+}
