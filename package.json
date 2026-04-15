@@ -20,5 +20,8 @@
   "homepage": "https://github.com/ryankles/CSC307-IE0#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
