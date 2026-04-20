@@ -6,10 +6,21 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
 
   function removeOneCharacter(index) {
-    const updated = characters.filter((character, i) => {
-      return i !== index;
-    });
-    setCharacters(updated);
+    const character = characters[index];
+    deleteUser(character.id)
+      .then((res) => {
+        if (res.status === 204) {
+          const updated = characters.filter((_, i) => i !== index);
+          setCharacters(updated);
+        } else if (res.status === 404) {
+          throw new Error("User not found on server");
+        } else {
+          throw new Error(`Unexpected status ${res.status}`);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function updateList(person) {
@@ -38,6 +49,14 @@ function MyApp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(person),
+    });
+
+    return promise;
+  }
+
+  function deleteUser(id) {
+    const promise = fetch(`http://localhost:8000/users/${id}`, {
+      method: "DELETE",
     });
 
     return promise;
