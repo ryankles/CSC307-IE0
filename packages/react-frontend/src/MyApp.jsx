@@ -16,11 +16,11 @@ function MyApp() {
     postUser(person)
       .then((res) => {
         if (res.status === 201) {
-          setCharacters([...characters, person]);
-        } else {
-          throw new Error(`Unexpected status ${res.status}`);
+          return res.json();
         }
+        throw new Error(`Unexpected status ${res.status}`);
       })
+      .then((newUser) => setCharacters([...characters, newUser]))
       .catch((error) => {
         console.log(error);
       });
