@@ -45,9 +45,12 @@ const findUserByName = (name) => {
 const findUserById = (id) =>
   users["users_list"].find((user) => user["id"] === id);
 
+const generateId = () => Math.random().toString(36).slice(2, 8);
+
 const addUser = (user) => {
-  users["users_list"].push(user);
-  return user;
+  const newUser = { id: generateId(), ...user };
+  users["users_list"].push(newUser);
+  return newUser;
 };
 
 const findUsersByNameAndJob = (name, job) => {
