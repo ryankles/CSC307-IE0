@@ -7,7 +7,7 @@ function MyApp() {
 
   function removeOneCharacter(index) {
     const character = characters[index];
-    deleteUser(character.id)
+    deleteUser(character._id)
       .then((res) => {
         if (res.status === 204) {
           const updated = characters.filter((_, i) => i !== index);
